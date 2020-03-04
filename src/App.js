@@ -3,22 +3,47 @@ import './App.css';
 import axios from 'axios';
 import swal from 'sweetalert2';
 
+// const HeroList = (props,herodetais) => {
+//   return (
+//     <div>
+//       <h3 className="text-white">str</h3>
+//       <div className="container-fluid">
+//         <div className="row">
+//           {/* {this.state.herodetails.map((hero) => {
+//             if (hero.primary_attr == 'str') {
+//               const localname = hero.name;
+//               const subname = localname.substring(14);
+//               return <div>
+//                 <img onClick={this.Alert} cursor="point" className="hero-img mr-1 ml-1 mt-2 " src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="50" height="70" />
+//               </div>
+//             }
+//           })} */}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      herodetails: []
+    }
+  }
   Alert(subname) {
     swal.fire({
       icon: 'success',
-      // html: <img src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + {subname} + '_vert.jpg'} width="50" height="70" />,
-      imageUrl: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname  + '_full.png',
+      html: <img src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + { subname } + '_vert.jpg'} width="50" height="70" />,
+      imageUrl: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_full.png',
       imageWidth: 400,
       imageHeight: 200,
-      title: 'Your work has been saved',
+      // title: herodetails.primary_attr,
       showConfirmButton: false,
       timer: 1000
     })
   }
-  state = {
-    herodetails: []
-  }
+
   componentDidMount = () => {
     axios.get(
       'https://api.opendota.com/api/heroes'
@@ -27,6 +52,7 @@ class App extends React.Component {
       this.setState(
         {
           herodetails
+
         }
       )
       console.log('response data', this.state.herodetails)
@@ -57,7 +83,6 @@ class App extends React.Component {
                 <option value="1">Antimage</option>
                 <option value="2">Axe</option>
               </select>
-
             </div>
           </div>
         </div>
@@ -65,6 +90,7 @@ class App extends React.Component {
         <div className="Content">
           <div className="heroes-list p-2">
 
+            {/* show strength hero */}
             <div className="strength-hero">
               <h3 className="text-white">STRENGTH</h3>
               <div className="container-fluid">
@@ -81,6 +107,7 @@ class App extends React.Component {
                 </div>
               </div>
             </div>
+            {/* show agility hero */}
             <div className="agility-hero">
               <h3 className="text-white">AGILITY</h3>
               <div className="container-fluid">
@@ -97,6 +124,7 @@ class App extends React.Component {
                 </div>
               </div>
             </div>
+            {/* show intelligence hero */}
             <div className="intelligence-hero">
               <h3 className="text-white">INTELLIGENCE</h3>
               <div className="container-fluid">
@@ -113,6 +141,7 @@ class App extends React.Component {
                 </div>
               </div>
             </div>
+            {/* <HeroList ></HeroList> */}
           </div>
         </div>
       </div >
