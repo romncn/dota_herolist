@@ -1,11 +1,21 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-
-
-
+import swal from 'sweetalert2';
 
 class App extends React.Component {
+  Alert(subname) {
+    swal.fire({
+      icon: 'success',
+      // html: <img src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + {subname} + '_vert.jpg'} width="50" height="70" />,
+      imageUrl: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname  + '_full.png',
+      imageWidth: 400,
+      imageHeight: 200,
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1000
+    })
+  }
   state = {
     herodetails: []
   }
@@ -64,7 +74,7 @@ class App extends React.Component {
                       const localname = hero.name;
                       const subname = localname.substring(14);
                       return <div>
-                        <img className=" mr-1 ml-1 mt-2 " src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="48" height="70" />
+                        <img onClick={this.Alert} cursor="point" className="hero-img mr-1 ml-1 mt-2 " src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="50" height="70" />
                       </div>
                     }
                   })}
@@ -79,8 +89,8 @@ class App extends React.Component {
                     if (hero.primary_attr == "agi") {
                       const localname = hero.name;
                       const subname = localname.substring(14);
-                      return <div className="text-white">
-                        <img className=" mr-2 mt-2" src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="48" height="70" />
+                      return <div>
+                        <img onClick={this.Alert} className="hero-img mr-2 mt-2" src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="48" height="70" />
                       </div>
                     }
                   })}
@@ -95,18 +105,17 @@ class App extends React.Component {
                     if (hero.primary_attr == "int") {
                       const localname = hero.name;
                       const subname = localname.substring(14);
-                      return <div className="text-white">
-                        <img className=" mr-2 mt-2" src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="48" height="70" />
+                      return <div>
+                        <img onClick={this.Alert} className="hero-img mr-2 mt-2" src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="48" height="70" />
                       </div>
                     }
                   })}
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-      </div>
+      </div >
     )
   }
 }
