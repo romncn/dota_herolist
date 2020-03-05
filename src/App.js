@@ -3,44 +3,36 @@ import './App.css';
 import axios from 'axios';
 import swal from 'sweetalert2';
 
-// const HeroList = (props,herodetais) => {
-//   return (
-//     <div>
-//       <h3 className="text-white">str</h3>
-//       <div className="container-fluid">
-//         <div className="row">
-//           {/* {this.state.herodetails.map((hero) => {
-//             if (hero.primary_attr == 'str') {
-//               const localname = hero.name;
-//               const subname = localname.substring(14);
-//               return <div>
-//                 <img onClick={this.Alert} cursor="point" className="hero-img mr-1 ml-1 mt-2 " src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="50" height="70" />
-//               </div>
-//             }
-//           })} */}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+
+
+const MyFilterCarry = (props) => {
+  return <button onClick={() => props.myFilterCarry('Carry')}>Filter Carry</button>
+}
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      herodetails: []
+      herodetails: [],
+      heroShow: []
     }
   }
-  Alert(subname) {
+   Alert = (hero) => {
     swal.fire({
-      icon: 'success',
-      html: <img src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + { subname } + '_vert.jpg'} width="50" height="70" />,
-      imageUrl: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_full.png',
+      imageUrl: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + hero.name.substring(14) + '_full.png',
       imageWidth: 400,
       imageHeight: 200,
-      // title: herodetails.primary_attr,
+      title: hero.localized_name,
+      text: hero.attack_type,
+      footer: hero.roles,
       showConfirmButton: false,
-      timer: 1000
+      
+    })
+  }
+   myFilterCarry = (type) => {
+    const carry = this.state.herodetails.filter((hero) => hero.roles.includes(type) === true)
+    this.setState({
+      heroShow: carry
     })
   }
 
@@ -52,7 +44,6 @@ class App extends React.Component {
       this.setState(
         {
           herodetails
-
         }
       )
       console.log('response data', this.state.herodetails)
@@ -95,15 +86,17 @@ class App extends React.Component {
               <h3 className="text-white">STRENGTH</h3>
               <div className="container-fluid">
                 <div className="row">
+
                   {this.state.herodetails.map((hero) => {
                     if (hero.primary_attr == "str") {
                       const localname = hero.name;
                       const subname = localname.substring(14);
                       return <div>
-                        <img onClick={this.Alert} cursor="point" className="hero-img mr-1 ml-1 mt-2 " src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="50" height="70" />
+                        <img onClick={() => this.Alert(hero)} cursor="point" className="hero-img mr-1 ml-1 mt-2 " src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="50" height="70" />
                       </div>
                     }
                   })}
+
                 </div>
               </div>
             </div>
@@ -117,7 +110,7 @@ class App extends React.Component {
                       const localname = hero.name;
                       const subname = localname.substring(14);
                       return <div>
-                        <img onClick={this.Alert} className="hero-img mr-2 mt-2" src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="48" height="70" />
+                        <img onClick={() => this.Alert(hero)} className="hero-img mr-2 mt-2" src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="48" height="70" />
                       </div>
                     }
                   })}
@@ -134,14 +127,16 @@ class App extends React.Component {
                       const localname = hero.name;
                       const subname = localname.substring(14);
                       return <div>
-                        <img onClick={this.Alert} className="hero-img mr-2 mt-2" src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="48" height="70" />
+                        <img onClick={() => this.Alert(hero)} className="hero-img mr-2 mt-2" src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + subname + '_vert.jpg'} width="48" height="70" />
                       </div>
                     }
                   })}
                 </div>
               </div>
             </div>
-            {/* <HeroList ></HeroList> */}
+            <div>
+              {/* <MyFilterCarry filtercarry={this.myFilterCarry}/> */}
+            </div>
           </div>
         </div>
       </div >
