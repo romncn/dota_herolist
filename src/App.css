@@ -10,10 +10,12 @@ body{
     
 }
 .fliter-block{
-    background-color: grey;
-    display: flex;
+    background-color: rgb(49, 49, 49);
+    display: inline-block;
+    
+    /* display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between; */
 }
 .hero-img{
     cursor: pointer;
@@ -22,4 +24,8 @@ body{
     transform: scale(2.0);
     border: 2px solid black;
     
+}
+.filter-btn{
+    background-color: rgb(73, 73, 73);
+    color: whitesmoke;
 }
