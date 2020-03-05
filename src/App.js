@@ -2,26 +2,7 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import swal from 'sweetalert2';
-
-
-
-const Filter = (props) => {
-  return (
-    <div>
-      <div class="dropdown ml-1 mr-1">
-        <button class="btn filter-btn title-color dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          {props.filter}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          {props.types.map((type, i) => {
-            return <button onClick={() => props.filterFunc(type)} class="dropdown-item" type="button">{type}</button>
-          })}
-        </div>
-      </div>
-    </div>
-  )
-}
+import Filter from './Filter';
 
 
 class App extends React.Component {
@@ -121,6 +102,7 @@ class App extends React.Component {
           </div>
         </div>
         <p />
+        
         <div className="Content">
           <div className="heroes-list p-2">
 
@@ -166,6 +148,7 @@ class App extends React.Component {
             {/* show intelligence hero */}
             <div className="intelligence-hero pb-2 pl-1">
               <h5 className="title-color">INTELLIGENCE</h5>
+
               <div className="container-fluid">
                 <div className="row">
                   {this.state.heroShow.map((hero) => {
@@ -177,7 +160,6 @@ class App extends React.Component {
                       </div>
                     }
                   })}
-
                 </div>
               </div>
             </div>
