@@ -4,14 +4,17 @@ body{
     background-color: rgb(28, 30, 41);
     opacity: 2;
     padding: 30px;
+    font-family: 'Francois One', sans-serif;
+
 }
 .heroes-list{
     background-color: rgb(27, 27, 27);
-    
 }
 .fliter-block{
     background-color: rgb(49, 49, 49);
     display: inline-block;
+    color: rgb(204, 204, 204);
+    border-radius: 4px;
     
     /* display: flex;
     flex-direction: row;
@@ -22,10 +25,11 @@ body{
 }
 .hero-img:hover{
     transform: scale(2.0);
-    border: 2px solid black;
-    
+    border: 2px solid black; 
+}
+.title-color{
+    color: rgb(204, 204, 204);
 }
 .filter-btn{
     background-color: rgb(73, 73, 73);
-    color: whitesmoke;
 }
