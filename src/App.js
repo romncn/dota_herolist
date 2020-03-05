@@ -18,7 +18,9 @@ class App extends React.Component {
         'Escape',
         'Disabler',
         'Initiator',
-        'Durable'],
+        'Durable',
+        'Pusher',
+        'Jungler'],
       heroAtkType: [
         'All',
         'Melee',
